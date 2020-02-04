@@ -10,9 +10,5 @@
         <module name="eatgo.eatgo-api.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="eatgo.main" target="11" />
-      <module name="eatgo.test" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
