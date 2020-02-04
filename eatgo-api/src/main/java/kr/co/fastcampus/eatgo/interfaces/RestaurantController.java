@@ -2,6 +2,7 @@ package kr.co.fastcampus.eatgo.interfaces;
 
 import kr.co.fastcampus.eatgo.domain.Restaurant;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -18,4 +19,11 @@ public class RestaurantController {
         restaurants.add(restaurant);
         return restaurants;
     }
+
+    @GetMapping("/restaurants/{id}")
+    public Restaurant detail(@PathVariable("id") Long id){
+        Restaurant restaurant = new Restaurant(1004L,"Bob zip", "Seoul");
+        return restaurant;
+    }
+
 }
