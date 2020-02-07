@@ -10,6 +10,7 @@ import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -49,7 +50,7 @@ class RestaurantServiceTest {
         Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
         restaurants.add(restaurant);
         given(restaurantRepository.findAll()).willReturn(restaurants);
-        given(restaurantRepository.findById(1004L)).willReturn(restaurant);
+        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
     }
 
     @Test
@@ -85,5 +86,14 @@ class RestaurantServiceTest {
         assertThat(created.getId(), is(1234L));
     }
 
+    @Test
+    public void updateRestaurant(){
+        Restaurant restaurant = new Restaurant(1004L, "Bob Zip", "Seoul");
+
+        Restaurant updated = restaurantService.updateRestaurant(1004L, "Sool Zip", "Busan");
+
+        assertThat(updated.getName(), is("Sool Zip"));
+
+    }
 
 }
