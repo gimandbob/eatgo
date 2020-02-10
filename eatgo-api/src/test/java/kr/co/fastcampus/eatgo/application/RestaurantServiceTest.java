@@ -47,7 +47,11 @@ class RestaurantServiceTest {
 
     private void mockRestaurantRepository() {
         List<Restaurant> restaurants = new ArrayList<>();
-        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .name("Bob zip")
+                .address("Seoul")
+                .build();
         restaurants.add(restaurant);
         given(restaurantRepository.findAll()).willReturn(restaurants);
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
@@ -88,11 +92,15 @@ class RestaurantServiceTest {
 
     @Test
     public void updateRestaurant(){
+
         Restaurant restaurant = new Restaurant(1004L, "Bob Zip", "Seoul");
+        given(restaurantRepository.findById(1004L))
+                .willReturn(Optional.of(restaurant));
 
-        Restaurant updated = restaurantService.updateRestaurant(1004L, "Sool Zip", "Busan");
+        restaurantService.updateRestaurant(1004L, "Sool Zip", "Busan");
 
-        assertThat(updated.getName(), is("Sool Zip"));
+        assertThat(restaurant.getName(), is("Sool Zip"));
+        assertThat(restaurant.getAddress(), is("Busan"));
 
     }
 
