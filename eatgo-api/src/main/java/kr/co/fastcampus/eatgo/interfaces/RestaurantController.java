@@ -36,12 +36,12 @@ public class RestaurantController {
         String name = resource.getName();
         String address = resource.getAddress();
 
-//        Restaurant restaurant = new Restaurant(name, address);
-//        restaurantService.addRestaurant(restaurant);
+        Restaurant restaurant = new Restaurant(name, address);
+        restaurant = restaurantService.addRestaurant(restaurant);
 
-        Restaurant restaurant = restaurantService.addRestaurant(
-                new Restaurant(name, address)
-        );
+//        Restaurant restaurant = restaurantService.addRestaurant(
+//                new Restaurant(name, address)
+//        );
 
 //        Restaurant restaurant = restaurantService.addRestaurant(
 //                Restaurant.builder()
