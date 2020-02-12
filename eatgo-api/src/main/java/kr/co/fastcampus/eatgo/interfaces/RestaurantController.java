@@ -39,16 +39,16 @@ public class RestaurantController {
 //        Restaurant restaurant = new Restaurant(name, address);
 //        restaurantService.addRestaurant(restaurant);
 
-        Restaurant restaurant = restaurantService.addRestaurant(
-                new Restaurant(name, address)
-        );
-
 //        Restaurant restaurant = restaurantService.addRestaurant(
-//                Restaurant.builder()
-//                        .name(resource.getName())
-//                        .address(resource.getAddress())
-//                        .build()
+//                new Restaurant(name, address)
 //        );
+
+        Restaurant restaurant = restaurantService.addRestaurant(
+                Restaurant.builder()
+                        .name(resource.getName())
+                        .address(resource.getAddress())
+                        .build()
+        );
 
         URI location = new URI("/restaurants/" + restaurant.getId());
         return ResponseEntity.created(location).body("{}");
